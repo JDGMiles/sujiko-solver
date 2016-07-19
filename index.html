@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Drag Select Test</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+  <br>
+  <center><table cellpadding="0" cellspacing="1" id="our_table">
+    <tr>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>H</td>
+      <td>I</td>
+    </tr>
+  </table>
+
+  <br>
+  <a href="#popup1"><img src="http://jdgmiles.github.io/questionmark.png" style="width:60px;"></a>
+  <a href="https://twitter.com/jimdgmiles" target=blank_><img src="../jdgmiles.github.io/twitter.png" style="width:60px; height:60px"></a>
+  <a href="http://jdgmiles.github.io/" target="_blank"><img src="http://jdgmiles.github.io/jdgm.png" style="width:60px"></a>
+
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <div style="font-family:Georgia; color:white; text-align:center; font-size:250%">Drag Select Test</div>
+      <a class="close" href="#">&times;</a>
+      <p style="font-family:Georgia; font-size:150%; color:white; text-align:center;">Adapting code from a great answer <a target="_blank" href="http://stackoverflow.com/questions/2013902/select-cells-on-a-table-by-dragging/2014138#2014138">here</a>.<br><br>Let's make something cool with this!</p>
+    </div>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function () {
+      var isMouseDown = false;
+      $("#our_table td")
+        .mousedown(function () {
+          isMouseDown = true;
+          $(this).toggleClass("highlighted");
+          return false; // prevent text selection
+        })
+        .mouseover(function () {
+          if (isMouseDown) {
+            $(this).toggleClass("highlighted");
+          }
+        })
+        .bind("selectstart", function () {
+          return false; // prevent text selection in IE
+        });
+
+      $(document)
+        .mouseup(function () {
+          isMouseDown = false;
+        });
+    });
+  </script>
+
+</body>
+</html>
