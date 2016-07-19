@@ -3,24 +3,19 @@
 @font-face {font-family: Liberation Serif Italic; src: url(http://jdgmiles.github.io/LiberationSerif-Italic.woff);}
 @font-face {font-family: Liberation Serif Bold Italic; src: url(http://jdgmiles.github.io/LiberationSerif-BoldItalic.woff);}
 
-body {font-family: Liberation Serif, Tahoma, Arial, Helvetica, Sans-Serif; background-color:black; color:black; cursor:default;}
+body {font-family: Liberation Serif, Tahoma, Arial, Helvetica, Sans-Serif; background-color:black; color:black;}
 
 a:link {color: red; text-decoration: none;}
 a:link:hover {text-decoration:underline}
 a:visited {color:#DD0000;}
 
-table td {
-  width:100px;
-  height:100px;
-  text-align:center;
-  vertical-align:middle;
-  font-size:40px;
-  background-color:#ccc;
-}
+td {width:100px; height:100px; text-align:center; vertical-align:middle; font-size:40px; background-color:#FFFFFF; border-radius:7px;}
 
-table td.highlighted {
-  background-color:#999;
-}
+.clues {margin-top:-262px}
+.clues td {background-color:rgba(0, 0, 0, 0);}
+
+.cluecircle {background-color:white; border-radius:50px; border:solid black 3px; width:75px; height:75px; display:table-cell; text-align:center; vertical-align:middle;}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -40,7 +35,7 @@ table td.highlighted {
 }
 
 .popup {
-  margin: 70px auto;
+  margin: 20px auto;
   padding: 20px;
   background: #181818;
   border: 2px solid #AAAAAA;
@@ -67,13 +62,4 @@ table td.highlighted {
 .popup .content {
   max-height: 30%;
   overflow: auto;
-}
-
-@media screen and (max-width: 700px){
-  .box{
-    width: 70%;
-  }
-  .popup{
-    width: 70%;
-  }
 }
