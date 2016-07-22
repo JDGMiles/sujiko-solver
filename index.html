@@ -9,30 +9,30 @@
   <br>
   <table class="answers">
     <tr>
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
+      <td id="answer1"></td>
+      <td id="answer2"></td>
+      <td id="answer3"></td>
     </tr>
     <tr>
-      <td>D</td>
-      <td>E</td>
-      <td>F</td>
+      <td id="answer4"></td>
+      <td id="answer5"></td>
+      <td id="answer6"></td>
     </tr>
     <tr>
-      <td>G</td>
-      <td>H</td>
-      <td>I</td>
+      <td id="answer7"></td>
+      <td id="answer8"></td>
+      <td id="answer9"></td>
     </tr>
   </table>
 
   <table class="clues">
     <tr>
-      <td><center><div id="clue1" onclick="clueclick(1)" class="cluecircle">A</div></center></td>
-      <td><center><div id="clue2" onclick="clueclick(2)" class="cluecircle">B</div></center></td>
+      <td><center><div id="clue1" onclick="clueclick(1)" class="cluecircle"></div></center></td>
+      <td><center><div id="clue2" onclick="clueclick(2)" class="cluecircle"></div></center></td>
     </tr>
     <tr>
-      <td><center><div id="clue3" onclick="clueclick(3)" class="cluecircle">C</div></center></td>
-      <td><center><div id="clue4" onclick="clueclick(4)" class="cluecircle">D</div></center></td>
+      <td><center><div id="clue3" onclick="clueclick(3)" class="cluecircle"></div></center></td>
+      <td><center><div id="clue4" onclick="clueclick(4)" class="cluecircle"></div></center></td>
     </tr>
   </table>
 
@@ -47,16 +47,134 @@
     <div class="popup">
       <div style="font-family:Georgia; color:white; text-align:center; font-size:250%">Sujiko Solver</div>
       <a class="close" href="#">&times;</a>
-      <p style="font-family:Georgia; font-size:150%; color:white; text-align:center;">This is a solver for Sujiko puzzles. Tap the circles to put in clues and when you have four it will automatically solve the puzzle (if a solution exists).<br><br>Click the &ldquo;!&rdquo; to have the page assign you four clues for a (unique) puzzle to solve yourself by tapping the answer cells. Tap the &ldquo;?&rdquo; to return to solving mode.</p>
+      <p style="font-family:Georgia; font-size:170%; color:white; text-align:center;">This is a solver for Sujiko puzzles. Tap the circles to put in clues and when you have four it will automatically solve the puzzle. If no solution exists it will colour the clue circles red.</p>
     </div>
   </div>
+
+	<div id="picknumber" class="pickingtable" style="visibility:hidden; position:absolute; top:0px; left:0px;">
+		<table style="background-color:gray; border-radius:10px;">
+			<tr style="vertical-align:middle;">
+				<td onClick="numberpicked(10)"; class="pickingcell"><div class="pickingcellcontent">10</div></td>
+				<td onClick="numberpicked(11)"; class="pickingcell"><div class="pickingcellcontent">11</div></td>
+				<td onClick="numberpicked(12)"; class="pickingcell"><div class="pickingcellcontent">12</div></td>
+				<td onClick="numberpicked(13)"; class="pickingcell"><div class="pickingcellcontent">13</div></td>
+				<td onClick="numberpicked(14)"; class="pickingcell"><div class="pickingcellcontent">14</div></td>
+				<td onClick="numberpicked(15)"; class="pickingcell"><div class="pickingcellcontent">15</div></td>
+				<td onClick="numberpicked(16)"; class="pickingcell"><div class="pickingcellcontent">16</div></td>
+			</tr>
+			<tr style="vertical-align:middle;">
+				<td onClick="numberpicked(17)"; class="pickingcell"><div class="pickingcellcontent">17</div></td>
+				<td onClick="numberpicked(18)"; class="pickingcell"><div class="pickingcellcontent">18</div></td>
+				<td onClick="numberpicked(19)"; class="pickingcell"><div class="pickingcellcontent">19</div></td>
+				<td onClick="numberpicked(20)"; class="pickingcell"><div class="pickingcellcontent">20</div></td>
+				<td onClick="numberpicked(21)"; class="pickingcell"><div class="pickingcellcontent">21</div></td>
+				<td onClick="numberpicked(22)"; class="pickingcell"><div class="pickingcellcontent">22</div></td>
+				<td onClick="numberpicked(23)"; class="pickingcell"><div class="pickingcellcontent">23</div></td>
+			</tr>
+			<tr style="vertical-align:middle;">
+				<td onClick="numberpicked(24)"; class="pickingcell"><div class="pickingcellcontent">24</div></td>
+				<td onClick="numberpicked(25)"; class="pickingcell"><div class="pickingcellcontent">25</div></td>
+				<td onClick="numberpicked(26)"; class="pickingcell"><div class="pickingcellcontent">26</div></td>
+				<td onClick="numberpicked(27)"; class="pickingcell"><div class="pickingcellcontent">27</div></td>
+				<td onClick="numberpicked(28)"; class="pickingcell"><div class="pickingcellcontent">28</div></td>
+				<td onClick="numberpicked(29)"; class="pickingcell"><div class="pickingcellcontent">29</div></td>
+				<td onClick="numberpicked(30)"; class="pickingcell"><div class="pickingcellcontent">30</div></td>
+			</tr>
+		</table>
+	</div>
 
 </center></body>
 </html>
 
 <script type="text/javascript">
+var clue=[];
+var answer=[];
+for(i=0; i<5; i++){clue[i]=0;}
+for(i=0; i<10; i++){answer[i]=0;}
+var editedclue=0;
+var solutionfound=0;
 
-function clueclick(){
-  document.getElementById("clue1").innerHTML="26";
+function clueclick(n){
+	document.getElementById("picknumber").style.visibility="visible";
+  document.getElementById("picknumber").style.left=(event.clientX+10)+"px";
+  document.getElementById("picknumber").style.top=(event.clientY+10)+"px";
+	editedclue=n;
 }
+
+function numberpicked(n){
+	clue[editedclue]=n;
+	document.getElementById("clue"+editedclue).innerHTML=n;
+	document.getElementById("picknumber").style.visibility="hidden";
+	if(clue[1]!=0 && clue[2]!=0 && clue[3]!=0 && clue[4]!=0){solve();}
+}
+
+function solve(){
+	document.getElementById("answer1").innerHTML="";
+	document.getElementById("answer2").innerHTML="";
+	document.getElementById("answer3").innerHTML="";
+	document.getElementById("answer4").innerHTML="";
+	document.getElementById("answer5").innerHTML="";
+	document.getElementById("answer6").innerHTML="";
+	document.getElementById("answer7").innerHTML="";
+	document.getElementById("answer8").innerHTML="";
+	document.getElementById("answer9").innerHTML="";
+	solutionfound=0;
+	for(a=1; a<10; a++){
+		for(b=1; b<10; b++){
+			if(a!=b){
+				for(c=1; c<10; c++){
+					if(c!=b && c!=a){
+						for(d=1; d<10; d++){
+							if(d!=c && d!=b && d!=a){
+								for(e=1; e<10; e++){
+									if(e!=d && e!=c && e!=b && e!=a){
+										for(f=1; f<10; f++){
+											if(f!=e && f!=d && f!=c && f!=b && f!=a){
+												for(g=1; g<10; g++){
+													if(g!=f && g!=e && g!=d && g!=c && g!=b && g!=a){
+														for(h=1; h<10; h++){
+															if(h!=g && h!=f && h!=e && h!=d && h!=c && h!=b && h!=a){
+																for(i=1; i<10; i++){
+																	if(i!=h && i!=g && i!=f && i!=e && i!=d && i!=c && i!=b && i!=a){
+																		if(clue[1]==a+b+d+e && clue[2]==b+c+e+f && clue[3]==d+e+g+h && clue[4]==e+f+h+i){
+																			document.getElementById("answer1").innerHTML=a;
+																			document.getElementById("answer2").innerHTML=b;
+																			document.getElementById("answer3").innerHTML=c;
+																			document.getElementById("answer4").innerHTML=d;
+																			document.getElementById("answer5").innerHTML=e;
+																			document.getElementById("answer6").innerHTML=f;
+																			document.getElementById("answer7").innerHTML=g;
+																			document.getElementById("answer8").innerHTML=h;
+																			document.getElementById("answer9").innerHTML=i;
+																			document.getElementById("clue1").style.backgroundColor="white";
+																			document.getElementById("clue2").style.backgroundColor="white";
+																			document.getElementById("clue3").style.backgroundColor="white";
+																			document.getElementById("clue4").style.backgroundColor="white";
+																			a=10;b=10;c=10;d=10;e=10;f=10;g=10;h=10;i=10;solutionfound=1;
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if(solutionfound==0){
+		document.getElementById("clue1").style.backgroundColor="red";
+		document.getElementById("clue2").style.backgroundColor="red";
+		document.getElementById("clue3").style.backgroundColor="red";
+		document.getElementById("clue4").style.backgroundColor="red";
+	}
+}
+
 </script>

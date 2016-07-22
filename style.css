@@ -3,18 +3,22 @@
 @font-face {font-family: Liberation Serif Italic; src: url(http://jdgmiles.github.io/LiberationSerif-Italic.woff);}
 @font-face {font-family: Liberation Serif Bold Italic; src: url(http://jdgmiles.github.io/LiberationSerif-BoldItalic.woff);}
 
-body {font-family: Liberation Serif, Georgia, Tahoma, Arial, Helvetica, Sans-Serif; background-color:black; color:black;}
+body {font-family: "Liberation Serif", Georgia, Tahoma, Arial, Helvetica, Sans-Serif; background-color:black; color:black;}
 
 a:link {color: red; text-decoration: none;}
 a:link:hover {text-decoration:underline}
 a:visited {color:#DD0000;}
 
-td {width:100px; height:100px; text-align:center; vertical-align:middle; font-size:40px; background-color:#FFFFFF; border-radius:7px;}
+.answers td {width:100px; height:100px; text-align:center; vertical-align:middle; font-size:40px; background-color:#FFFFFF; border-radius:7px;}
 
 .clues {margin-top:-262px;}
-.clues td {background-color:rgba(0, 0, 0, 0);}
+.clues td {background-color:rgba(0, 0, 0, 0); width:100px; height:100px; text-align:center; vertical-align:middle; font-size:40px; border-radius:7px;}
 
 .cluecircle {background-color:white; border-radius:50px; border:solid black 3px; width:75px; height:75px; display:table-cell; text-align:center; vertical-align:middle;}
+
+.pickingcell {text-align:center; vertical-align:middle; background-color:transparent; padding:3px;}
+
+.pickingcellcontent {text-align:center; vertical-align:middle; width:30px; height:30px; background-color:white; padding:0; border-radius:8px; border:3px solid black; text-align:center; font-size:25px; color:black;}
 
 .overlay {
   position: fixed;
@@ -35,12 +39,12 @@ td {width:100px; height:100px; text-align:center; vertical-align:middle; font-si
 }
 
 .popup {
-  margin: 20px auto;
+  margin: 35px auto;
   padding: 20px;
   background: #181818;
   border: 2px solid #AAAAAA;
   border-radius: 20px;
-  width: 30%;
+  width: 25%;
   position: relative;
   transition: all 0s ease-in-out;
 }
